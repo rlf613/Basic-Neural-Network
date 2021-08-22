@@ -501,14 +501,15 @@ class PreProcessing:
                 data, target = data[perm], target[perm]
                 target_train, target_test = target[:train_size], target[-test_size:]
 
-                dist2 = PreProcessing.distribution(target_train)
-                dist3 = PreProcessing.distribution(target_test)
+                train_dist = PreProcessing.distribution(target_train)
+                test_dist = PreProcessing.distribution(target_test)
 
-                for i in range(10):
-                    if math.isclose(dist[i], dist2[i], abs_tol=tol) and math.isclose(dist[i], dist3[i], abs_tol=tol):
+                for i in range(len(dist)):
+                    if math.isclose(dist[i], train_dist[i], abs_tol=tol) and math.isclose(dist[i], test_dist[i], abs_tol=tol):
                         continue
                     else:
-                        failed = True;
+                        failed = True
+                        break
 
                 if not failed:
                     print('\b', end='')
