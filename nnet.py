@@ -473,7 +473,7 @@ class PreProcessing:
     def split(data, target, test_split=1/7, shuffle=True, seed=None, stratify=True):
 
         if stratify and not shuffle:
-            raise ValueError("'shuffle' must be true if using 'stratify'.")
+            raise ValueError("shuffle must be true if using stratify.")
 
         samples = data.shape[0]
 
